@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finalizar Compra - Newton Roleplay</title>
+  <style>
+    :root {
+      --color-primario: #00ff99;
+      --color-fondo: #0a0a0b;
+      --color-superficie: rgba(30, 30, 30, 0.85);
+      --color-texto: #e0e0e0;
+      --color-paypal: #0070ba;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at top, #1a1a1d 0%, #0a0a0b 100%);
+      color: var(--color-texto);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .checkout-container, .factura-container {
+      background: var(--color-superficie);
+      border: 1px solid var(--color-primario);
+      padding: 35px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 0 30px rgba(0, 255, 153, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .factura-container {
+      display: none;
+      border-color: var(--color-paypal);
+      box-shadow: 0 0 30px rgba(0, 112, 186, 0.25);
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--color-primario);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .factura-container h2 {
+      color: #3b82f6;
+    }
+
+    .producto-seleccionado {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--color-primario);
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid #444;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--color-primario);
+      box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+    }
+
+    .info-internacional {
+      background: rgba(0, 112, 186, 0.1);
+      border: 1px solid var(--color-paypal);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      color: #b0e0e6;
+    }
+
+    .btn-pagar, .btn-discord {
+      width: 100%;
+      background: var(--color-paypal);
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.2s, filter 0.3s;
+    }
+
+    .btn-pagar:hover, .btn-discord:hover {
+      filter: brightness(1.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-discord {
+      background: #5865F2;
+      margin-top: 15px;
+    }
+
+    .detalle-factura {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      font-size: 0.95rem;
+    }
+
+    .detalle-factura p {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .detalle-factura span {
+      color: var(--color-primario);
+      font-weight: bold;
+    }
+
+    .volver {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .volver:hover { color: var(--color-primario); }
+  </style>
+</head>
+<body>
+
+  <!-- FORMULARIO DE COMPRA -->
+  <div class="checkout-container" id="seccionFormulario">
+    <h2>Pagos Internacional</h2>
+    <div id="nombreProducto" class="producto-seleccionado">Cargando producto...</div>
+
+    <form id="formCheckout">
+      <div class="form-group">
+        <label for="usuarioSamp">Tu Usuario de Personaje en SA-MP</label>
+        <input type="text" id="usuarioSamp" placeholder="Jugador_Desconocido" required>
+      </div>
+
+      <div class="info-internacional">
+        🌍 <strong>Pago Global Seguro:</strong> Acepta tarjetas de crédito / débito
+      </div>
+
+      <button type="submit" class="btn-pagar">
+        🌐 Pagar
+      </button>
+    </form>
+
+    <a href="NewtonWEB.html" class="volver">← Volver a la tienda</a>
+  </div>
+
+  <!-- FACTURA DE CONFIRMACIÓN -->
+  <div class="factura-container" id="seccionFactura">
+    <h2>🧾 Factura de Pedido</h2>
+    <p style="text-align: center; font-size: 0.85rem; color: #aaa; margin-bottom: 15px;">Toma una captura de pantalla a este comprobante y envíala a nuestro soporte.</p>
+
+    <div class="detalle-factura">
+      <p>ID de Orden: <span id="facturaId">#NW-00000</span></p>
+      <p>Personaje SA-MP: <span id="facturaUsuario">---</span></p>
+      <p>Paquete: <span id="facturaProducto">---</span></p>
+      <p>Monto Total: <span id="facturaPrecio">---</span></p>
+      <p>Estado: <span style="color: #ffcc00;">Pendiente de Verificación</span></p>
+    </div>
+
+    <button type="button" class="btn-discord" onclick="irADiscord()">
+      💬 Enviar Captura a Discord
+    </button>
+
+    <a href="NewtonWEB.html" class="volver">← Regresar a la tienda</a>
+  </div>
+
+  <script>
+    const CORREO_PAYPAL = "mirandaguarli@gmail.com";
+
+    const preciosUSD = {
+      "Paquete Bronce": 3.00,
+      "Paquete Plata": 6.00,
+      "Paquete Oro": 12.00,
+      "Paquete Diamante": 18.00,
+      "Titanium Core": 40.00,
+      "Empresas & Mapeos": 25.00
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const producto = urlParams.get('producto') || 'Paquete Bronce';
+    document.getElementById('nombreProducto').textContent = producto;
+
+    document.getElementById('formCheckout').onsubmit = function(e) {
+      e.preventDefault();
+      const usuario = document.getElementById('usuarioSamp').value.trim();
+
+      if (!usuario) {
+        alert("⚠️ Ingresa el usuario de tu personaje en SA-MP.");
+        return;
+      }
+
+      const monto = preciosUSD[producto] || 5.00;
+
+      // Cargar datos en la factura
+      document.getElementById('facturaUsuario').textContent = usuario;
+      document.getElementById('facturaProducto').textContent = producto;
+      document.getElementById('facturaPrecio').textContent = `$${monto.toFixed(2)} USD`;
+      document.getElementById('facturaId').textContent = '#NW-' + Math.floor(10000 + Math.random() * 90000);
+
+      // Mostrar factura y ocultar formulario
+      document.getElementById('seccionFormulario').style.display = 'none';
+      document.getElementById('seccionFactura').style.display = 'block';
+
+      // Abrir página de pago de PayPal en pestaña nueva
+      const urlPayPal = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(CORREO_PAYPAL)}&item_name=${encodeURIComponent(producto + ' (SAMP: ' + usuario + ')')}&amount=${monto}&currency_code=USD`;
+      window.open(urlPayPal, '_blank');
+    };
+
+    function irADiscord() {
+      window.open("https://discord.com/channels/1185785973133541578/1186241445804384257", '_blank');
+    }
+  </script>
+
+</body>
+</html>
