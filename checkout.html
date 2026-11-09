@@ -186,7 +186,7 @@
       </button>
     </form>
 
-    <a href="NewtonWEB.html" class="volver">← Volver a la tienda</a>
+    <a href="index.html" class="volver">← Volver a la tienda</a>
   </div>
 
   <!-- FACTURA DE CONFIRMACIÓN -->
@@ -206,11 +206,12 @@
       💬 Enviar Captura a Discord
     </button>
 
-    <a href="NewtonWEB.html" class="volver">← Regresar a la tienda</a>
+    <a href="index.html" class="volver">← Regresar a la tienda</a>
   </div>
 
   <script>
-    const CORREO_PAYPAL = "mirandaguarli@gmail.com";
+    // Correo configurado con tu cuenta actual de PayPal
+    const CORREO_PAYPAL = "guarlymiranda31@gmail.com";
 
     const preciosUSD = {
       "Paquete Bronce": 3.00,
@@ -246,7 +247,7 @@
       document.getElementById('seccionFormulario').style.display = 'none';
       document.getElementById('seccionFactura').style.display = 'block';
 
-      // Abrir página de pago de PayPal en pestaña nueva
+      // Abrir página de pago de PayPal en pestaña nueva con tu nuevo correo
       const urlPayPal = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(CORREO_PAYPAL)}&item_name=${encodeURIComponent(producto + ' (SAMP: ' + usuario + ')')}&amount=${monto}&currency_code=USD`;
       window.open(urlPayPal, '_blank');
     };
