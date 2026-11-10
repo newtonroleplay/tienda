@@ -170,29 +170,64 @@
       display: flex;
       gap: 10px;
       margin-top: auto;
+      align-items: center;
     }
 
-    .btn-comprar {
+    /* ESTILO PARA LOS BOTONES DE COMPRA EN LAS TARJETAS */
+    .btn-imagen-comprar {
       flex: 1;
-      background: var(--color-primario);
-      color: #000;
+      height: 45px;
+      background-image: url('boton1.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-color: transparent;
       border: none;
-      padding: 12px 10px;
-      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: filter 0.3s, transform 0.2s;
+      transition: transform 0.2s ease, filter 0.2s ease;
     }
 
-    .btn-comprar:hover { filter: brightness(1.2); transform: translateY(-2px); }
+    .btn-imagen-comprar:hover {
+      background-image: url('boton2.png');
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-imagen-comprar:active {
+      transform: translateY(0);
+    }
+
+    /* ESTILO ESPECÍFICO PARA EL BOTÓN DEL CARRITO: MISMO ALTO, ANCHO CONTROLADO Y CENTRADO */
+    .btn-imagen-carrito {
+      display: block;
+      width: 80%;
+      max-width: 250px;
+      height: 45px;
+      margin: 0 auto;
+      background-image: url('boton1.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn-imagen-carrito:hover {
+      background-image: url('boton2.png');
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-imagen-carrito:active {
+      transform: translateY(0);
+    }
 
     .btn-add-cart {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
       padding: 12px;
+      height: 45px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 0.9rem;
@@ -339,6 +374,7 @@
       padding: 20px;
       background: rgba(0, 0, 0, 0.5);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
     }
 
     .resumen-total {
@@ -354,22 +390,6 @@
       color: var(--color-primario);
       font-size: 1.5rem;
     }
-
-    .btn-procesar-carrito {
-      width: 100%;
-      background: var(--color-primario);
-      color: #000;
-      border: none;
-      padding: 15px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1rem;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: filter 0.3s;
-    }
-
-    .btn-procesar-carrito:hover { filter: brightness(1.2); }
 
     .modal-overlay {
       display: none;
@@ -532,7 +552,7 @@
           <p class="precio-usd">$3.00 USD</p>
           <p class="descripcion">Ideal para empezar y darte un pequeño impulso en el servidor</p>
           <div class="acciones-card">
-            <button class="btn-comprar" onclick="comprarDirecto('Paquete Bronce')">Comprar</button>
+            <button class="btn-imagen-comprar" onclick="comprarDirecto('Paquete Bronce')" title="Comprar"></button>
             <button class="btn-add-cart" onclick="agregarAlCarrito('Paquete Bronce')">🛒 +Carrito</button>
           </div>
         </div>
@@ -544,7 +564,7 @@
           <p class="precio-usd">$6.00 USD</p>
           <p class="descripcion">Un paquete balanceado para obtener ventajas significativas</p>
           <div class="acciones-card">
-            <button class="btn-comprar" onclick="comprarDirecto('Paquete Plata')">Comprar</button>
+            <button class="btn-imagen-comprar" onclick="comprarDirecto('Paquete Plata')" title="Comprar"></button>
             <button class="btn-add-cart" onclick="agregarAlCarrito('Paquete Plata')">🛒 +Carrito</button>
           </div>
         </div>
@@ -556,7 +576,7 @@
           <p class="precio-usd">$12.00 USD</p>
           <p class="descripcion">Conviértete en un jugador destacado con este gran paquete de Coin</p>
           <div class="acciones-card">
-            <button class="btn-comprar" onclick="comprarDirecto('Paquete Oro')">Comprar</button>
+            <button class="btn-imagen-comprar" onclick="comprarDirecto('Paquete Oro')" title="Comprar"></button>
             <button class="btn-add-cart" onclick="agregarAlCarrito('Paquete Oro')">🛒 +Carrito</button>
           </div>
         </div>
@@ -568,7 +588,7 @@
           <p class="precio-usd">$18.00 USD</p>
           <p class="descripcion">El paquete definitivo para dominar el servidor. Incluye beneficios extra</p>
           <div class="acciones-card">
-            <button class="btn-comprar" onclick="comprarDirecto('Paquete Diamante')">Comprar</button>
+            <button class="btn-imagen-comprar" onclick="comprarDirecto('Paquete Diamante')" title="Comprar"></button>
             <button class="btn-add-cart" onclick="agregarAlCarrito('Paquete Diamante')">🛒 +Carrito</button>
           </div>
         </div>
@@ -580,7 +600,7 @@
           <p class="precio-usd" style="color: #60a5fa;">$30.00 USD</p>
           <p class="descripcion">El poder absoluto del servidor. Desbloquea el máximo potencial</p>
           <div class="acciones-card">
-            <button class="btn-comprar" style="background: #1d4ed8; color: #fff;" onclick="comprarDirecto('Titanium Core')">Comprar</button>
+            <button class="btn-imagen-comprar" onclick="comprarDirecto('Titanium Core')" title="Comprar"></button>
             <button class="btn-add-cart" onclick="agregarAlCarrito('Titanium Core')">🛒 +Carrito</button>
           </div>
         </div>
@@ -592,7 +612,7 @@
           <p class="precio-usd" style="color: #d8b4fe;">$36.00 USD</p>
           <p class="descripcion">Laboratorios, facciones y mapeos personalizados exclusivos</p>
           <div class="acciones-card">
-            <button class="btn-comprar" style="background: #9333ea; color: #fff;" onclick="comprarDirecto('Empresas & Mapeos')">Comprar</button>
+            <button class="btn-imagen-comprar" onclick="comprarDirecto('Empresas & Mapeos')" title="Comprar"></button>
             <button class="btn-add-cart" onclick="agregarAlCarrito('Empresas & Mapeos')">🛒 +Carrito</button>
           </div>
         </div>
@@ -602,7 +622,7 @@
     <section id="soporte" style="margin-top: 50px; text-align: center;">
         <h2>¿Necesitas Ayuda?</h2>
         <p>Contáctanos en nuestro Discord para cualquier duda o problema</p>
-        <button onclick="window.open('https://discord.com/channels/1185785973133541578/1186241445804384257', '_blank')" class="btn-comprar" style="margin-top: 20px; background-color: #5865F2; color: #fff; max-width: 250px; margin: 20px auto 0 auto;">Ir a Discord</button>
+        <button onclick="window.open('https://discord.com/channels/1185785973133541578/1186241445804384257', '_blank')" class="btn-pagar" style="margin: 20px auto 0 auto; max-width: 250px; background-color: #5865F2;">Ir a Discord</button>
     </section>
   </main>
 
@@ -632,7 +652,8 @@
         <span>Total a Pagar:</span>
         <span id="totalCarrito">$0.00 USD</span>
       </div>
-      <button class="btn-procesar-carrito" onclick="procesarPagoCarrito()">Procesar Pago</button>
+      <!-- BOTÓN DEL CARRITO CON MISMO TAMAÑO Y PERFECTAMENTE CENTRADO -->
+      <button class="btn-imagen-carrito" onclick="procesarPagoCarrito()" title="Procesar Pago"></button>
     </div>
   </aside>
 
