@@ -11,7 +11,7 @@
       --color-superficie: rgba(30, 30, 30, 0.85);
       --color-texto: #e0e0e0;
       --color-texto-secundario: #a0a0a0;
-      --color-paypal: #0070ba;
+      --color-pago: #0070ba;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -82,7 +82,6 @@
       color: #fff;
     }
 
-    /* BOTÓN DE FLOTANTE / NAV PARA ABRIR EL CARRITO */
     .btn-abrir-carrito {
       position: fixed;
       top: 15px;
@@ -163,10 +162,10 @@
     }
 
     .card h3 { font-size: 1.8rem; margin-top: 0; }
-    .card .precio { font-size: 2rem; font-weight: bold; color: var(--color-primario); margin: 10px 0; }
+    .card .precio-coin { font-size: 1.5rem; font-weight: bold; color: var(--color-primario); margin: 5px 0; }
+    .card .precio-usd { font-size: 1.1rem; color: #a3e635; font-weight: 600; margin-bottom: 10px; }
     .card .descripcion { flex-grow: 1; color: var(--color-texto-secundario); margin-bottom: 20px; }
 
-    /* CONTENEDOR DE DOS BOTONES POR TARJETA */
     .acciones-card {
       display: flex;
       gap: 10px;
@@ -210,7 +209,6 @@
       color: var(--color-primario);
     }
 
-    /* --- PORTÓN / DRAWER LATERAL DEL CARRITO --- */
     .overlay-carrito {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -373,7 +371,6 @@
 
     .btn-procesar-carrito:hover { filter: brightness(1.2); }
 
-    /* --- MODAL DE CHECKOUT Y PAGO --- */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -447,7 +444,7 @@
 
     .info-internacional {
       background: rgba(0, 112, 186, 0.1);
-      border: 1px solid var(--color-paypal);
+      border: 1px solid var(--color-pago);
       border-radius: 10px;
       padding: 12px;
       text-align: center;
@@ -472,7 +469,7 @@
 
     .btn-pagar, .btn-discord {
       width: 100%;
-      background: var(--color-paypal);
+      background: var(--color-pago);
       color: #fff;
       border: none;
       padding: 15px;
@@ -515,9 +512,8 @@
       <li><a href="#soporte">Soporte</a></li>
     </ul>
 
-    <!-- BOTÓN DE CARRITO -->
     <button class="btn-abrir-carrito" onclick="toggleCarrito(true)">
-       Carrito
+        Carrito
       <span class="badge-carrito" id="cartCount">0</span>
     </button>
   </nav>
@@ -529,9 +525,11 @@
       </div>
       
       <div class="grid-productos">
+        <!-- Paquete Bronce -->
         <div class="card">
           <h3 style="color: #CD7F32;">Paquete Bronce</h3>
-          <p class="precio">5 Coin</p>
+          <p class="precio-coin">5 Coin</p>
+          <p class="precio-usd">$3.00 USD</p>
           <p class="descripcion">Ideal para empezar y darte un pequeño impulso en el servidor</p>
           <div class="acciones-card">
             <button class="btn-comprar" onclick="comprarDirecto('Paquete Bronce')">Comprar</button>
@@ -539,9 +537,11 @@
           </div>
         </div>
 
+        <!-- Paquete Plata -->
         <div class="card">
           <h3 style="color: #C0C0C0;">Paquete Plata</h3>
-          <p class="precio">10 Coin</p>
+          <p class="precio-coin">10 Coin</p>
+          <p class="precio-usd">$6.00 USD</p>
           <p class="descripcion">Un paquete balanceado para obtener ventajas significativas</p>
           <div class="acciones-card">
             <button class="btn-comprar" onclick="comprarDirecto('Paquete Plata')">Comprar</button>
@@ -549,9 +549,11 @@
           </div>
         </div>
 
+        <!-- Paquete Oro -->
         <div class="card">
           <h3 style="color: #FFD700;">Paquete Oro</h3>
-          <p class="precio">20 Coin</p>
+          <p class="precio-coin">20 Coin</p>
+          <p class="precio-usd">$12.00 USD</p>
           <p class="descripcion">Conviértete en un jugador destacado con este gran paquete de Coin</p>
           <div class="acciones-card">
             <button class="btn-comprar" onclick="comprarDirecto('Paquete Oro')">Comprar</button>
@@ -559,19 +561,23 @@
           </div>
         </div>
         
+        <!-- Paquete Diamante -->
         <div class="card">
           <h3 style="color: #87CEEB;">Paquete Diamante</h3>
-          <p class="precio">25 Coin</p>
+          <p class="precio-coin">25 Coin</p>
+          <p class="precio-usd">$18.00 USD</p>
           <p class="descripcion">El paquete definitivo para dominar el servidor. Incluye beneficios extra</p>
           <div class="acciones-card">
-            <button class="btn-comprar" onclick="abrirCheckoutModal('Paquete Diamante', 18.00)">Comprar</button>
+            <button class="btn-comprar" onclick="comprarDirecto('Paquete Diamante')">Comprar</button>
             <button class="btn-add-cart" onclick="agregarAlCarrito('Paquete Diamante')">🛒 +Carrito</button>
           </div>
         </div>
 
+        <!-- Titanium Core -->
         <div class="card" style="background: rgba(15, 23, 42, 0.95); border: 2px solid #2563eb;">
           <h3 style="color: #3b82f6;">Titanium Core</h3>
-          <p class="precio" style="color: #93c5fd;">100 Coin</p>
+          <p class="precio-coin" style="color: #93c5fd;">100 Coin</p>
+          <p class="precio-usd" style="color: #60a5fa;">$30.00 USD</p>
           <p class="descripcion">El poder absoluto del servidor. Desbloquea el máximo potencial</p>
           <div class="acciones-card">
             <button class="btn-comprar" style="background: #1d4ed8; color: #fff;" onclick="comprarDirecto('Titanium Core')">Comprar</button>
@@ -579,9 +585,11 @@
           </div>
         </div>
 
+        <!-- Mapeos -->
         <div class="card" style="background: rgba(18, 12, 35, 0.9); border: 2px solid #9333ea;">
           <h3 style="color: #c084fc;">Mapeos</h3>
-          <p class="precio" style="color: #e9d5ff;">EMP / LAB</p>
+          <p class="precio-coin" style="color: #e9d5ff;">EMP / LAB</p>
+          <p class="precio-usd" style="color: #d8b4fe;">$36.00 USD</p>
           <p class="descripcion">Laboratorios, facciones y mapeos personalizados exclusivos</p>
           <div class="acciones-card">
             <button class="btn-comprar" style="background: #9333ea; color: #fff;" onclick="comprarDirecto('Empresas & Mapeos')">Comprar</button>
@@ -604,7 +612,7 @@
     </div>
   </footer>
 
-  <!-- DRAWER / PORTÓN LATERAL DEL CARRITO -->
+  <!-- DRAWER LATERAL DEL CARRITO -->
   <div class="overlay-carrito" id="overlayCarrito" onclick="toggleCarrito(false)"></div>
   <aside class="drawer-carrito" id="drawerCarrito">
     <div class="header-carrito">
@@ -624,36 +632,36 @@
         <span>Total a Pagar:</span>
         <span id="totalCarrito">$0.00 USD</span>
       </div>
-      <button class="btn-procesar-carrito" onclick="procesarPagoCarrito()">Pagar Todo con PayPal</button>
+      <button class="btn-procesar-carrito" onclick="procesarPagoCarrito()">Procesar Pago</button>
     </div>
   </aside>
 
-  <!-- VENTANA EMERGENTE (MODAL) DE PAGO -->
+  <!-- MODAL DE CHECKOUT -->
   <div id="modalCheckout" class="modal-overlay">
     <div class="checkout-box">
       <span class="cerrar-checkout" onclick="cerrarCheckout()">&times;</span>
       
-      <h2 id="tituloModal">Pagos Internacional</h2>
+      <h2 id="tituloModal">Portal de Pagos</h2>
       <div id="nombreProducto" class="producto-seleccionado">Cargando...</div>
 
       <form id="formCheckout">
         <div class="form-group" id="grupoUsuario">
           <label for="usuarioSamp">Tu Usuario de Personaje en SA-MP</label>
-          <input type="text" id="usuarioSamp" placeholder="Jugador_Desconocido">
+          <input type="text" id="usuarioSamp" placeholder="Jugador_Desconocido" required>
         </div>
 
         <div class="info-internacional" id="infoPago">
-          🌍 <strong>Pago Global Seguro:</strong> Acepta tarjetas de crédito / débito vía PayPal.
+          🌍 <strong>Transacción Segura:</strong> Procesamiento internacional habilitado.
         </div>
 
         <div class="instrucciones-postpago" id="instruccionesPostpago">
           <p>⏳ <strong>Proceso de verificación:</strong></p>
-          <p>1. Completa la transacción en la pestaña de PayPal que se acaba de abrir.</p>
-          <p>2. Haz clic abajo para ir a nuestro Discord y enviar el comprobante o correo de tu pago junto con tu usuario de SA-MP.</p>
+          <p>1. Completa la transacción en la ventana de pago que se acaba de abrir.</p>
+          <p>2. Haz clic abajo para ir a nuestro Discord y enviar el comprobante junto con tu usuario de SA-MP.</p>
         </div>
 
         <button type="submit" class="btn-pagar" id="btnAccion">
-          🌐 Ir a Pagar con PayPal
+          🌐 Procesar Pago
         </button>
 
         <button type="button" class="btn-discord" id="btnDiscord" style="display: none;" onclick="irADiscord()">
@@ -664,7 +672,7 @@
   </div>
 
   <script>
-    const CORREO_PAYPAL = "guarlymiranda31@gmail.com";
+    const CORREO_PAGO = "guarlymiranda31@gmail.com";
 
     const preciosUSD = {
       "Paquete Bronce": 3.00,
@@ -678,7 +686,6 @@
     let carrito = [];
     let checkoutActual = { itemNombre: '', montoTotal: 0 };
 
-    // FUNCIÓN PARA ABRIR / CERRAR PORTÓN DEL CARRITO
     function toggleCarrito(abrir) {
       const drawer = document.getElementById('drawerCarrito');
       const overlay = document.getElementById('overlayCarrito');
@@ -691,7 +698,6 @@
       }
     }
 
-    // AGREGAR ITEM AL CARRITO
     function agregarAlCarrito(producto) {
       const itemExistente = carrito.find(item => item.nombre === producto);
       if (itemExistente) {
@@ -703,7 +709,6 @@
       toggleCarrito(true);
     }
 
-    // CAMBIAR CANTIDAD
     function cambiarCantidad(index, delta) {
       carrito[index].cantidad += delta;
       if (carrito[index].cantidad <= 0) {
@@ -712,7 +717,6 @@
       actualizarCarritoUI();
     }
 
-    // ACTUALIZAR INTERFAZ DEL CARRITO
     function actualizarCarritoUI() {
       const cuerpo = document.getElementById('cuerpoCarrito');
       const badge = document.getElementById('cartCount');
@@ -737,9 +741,9 @@
                 <span>$${subtotal.toFixed(2)} USD</span>
               </div>
               <div class="controles-item">
-                <button class="btn-cantidad" onclick="cambiarCantidad(${index}, -1)">-</button>
+                <button class="btn-cantidad" type="button" onclick="cambiarCantidad(${index}, -1)">-</button>
                 <span>${item.cantidad}</span>
-                <button class="btn-cantidad" onclick="cambiarCantidad(${index}, 1)">+</button>
+                <button class="btn-cantidad" type="button" onclick="cambiarCantidad(${index}, 1)">+</button>
               </div>
             </div>
           `;
@@ -750,13 +754,11 @@
       totalSpan.textContent = `$${montoTotal.toFixed(2)} USD`;
     }
 
-    // COMPRAR DIRECTO UN SOLO PRODUCTO
     function comprarDirecto(producto) {
       const monto = preciosUSD[producto] || 5.00;
       abrirCheckoutModal(producto, monto);
     }
 
-    // PROCESAR PAGO COMPLETO DEL CARRITO
     function procesarPagoCarrito() {
       if (carrito.length === 0) {
         alert("⚠️ Tu carrito está vacío. Agrega al menos un paquete.");
@@ -770,7 +772,6 @@
       abrirCheckoutModal(resumen, total);
     }
 
-    // MODAL CHECKOUT CONTROL
     function abrirCheckoutModal(descripcion, monto) {
       checkoutActual.itemNombre = descripcion;
       checkoutActual.montoTotal = monto;
@@ -783,7 +784,7 @@
       document.getElementById('instruccionesPostpago').style.display = 'none';
       document.getElementById('btnAccion').style.display = 'flex';
       document.getElementById('btnDiscord').style.display = 'none';
-      document.getElementById('tituloModal').textContent = "Pagos Internacional";
+      document.getElementById('tituloModal').textContent = "Portal de Pagos";
       document.getElementById('usuarioSamp').value = '';
     }
 
@@ -807,8 +808,8 @@
       document.getElementById('instruccionesPostpago').style.display = 'block';
       document.getElementById('btnDiscord').style.display = 'flex';
 
-      const urlPayPal = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(CORREO_PAYPAL)}&item_name=${encodeURIComponent(checkoutActual.itemNombre + ' (SAMP: ' + usuario + ')')}&amount=${checkoutActual.montoTotal.toFixed(2)}&currency_code=USD`;
-      window.open(urlPayPal, '_blank');
+      const urlPasarela = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(CORREO_PAGO)}&item_name=${encodeURIComponent(checkoutActual.itemNombre + ' (SAMP: ' + usuario + ')')}&amount=${checkoutActual.montoTotal.toFixed(2)}&currency_code=USD`;
+      window.open(urlPasarela, '_blank');
     };
 
     function irADiscord() {
